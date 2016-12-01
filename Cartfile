@@ -1,1 +1,2 @@
 github "iandundas/HotTakeRealm"
+github "ReactiveKit/ReactiveUIKit" ~> 2.0

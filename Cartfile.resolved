@@ -1,4 +1,5 @@
 github "ReactiveKit/ReactiveKit" "v2.1.1"
 github "realm/realm-cocoa" "v1.1.0"
 github "iandundas/HotTakeCore" "v0.9.0"
+github "ReactiveKit/ReactiveUIKit" "v2.0.1"
 github "iandundas/HotTakeRealm" "v0.9.0"
