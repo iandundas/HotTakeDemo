@@ -11,6 +11,8 @@
 		3C91E16B1DEFD78900B592E1 /* ReactiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C91E16A1DEFD78900B592E1 /* ReactiveKit.framework */; };
 		3C91E16D1DEFD78F00B592E1 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C91E16C1DEFD78F00B592E1 /* Realm.framework */; };
 		3C91E1701DEFD8A800B592E1 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C91E16F1DEFD8A800B592E1 /* RealmSwift.framework */; };
+		3C91E1731DEFDA1A00B592E1 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C91E1721DEFDA1A00B592E1 /* Cat.swift */; };
+		3C91E1751DEFDC5D00B592E1 /* ReactiveUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C91E1741DEFDC5D00B592E1 /* ReactiveUIKit.framework */; };
 		3CEB6D521DEE8AA400D35A77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB6D511DEE8AA400D35A77 /* AppDelegate.swift */; };
 		3CEB6D541DEE8AA400D35A77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB6D531DEE8AA400D35A77 /* ViewController.swift */; };
 		3CEB6D571DEE8AA400D35A77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB6D551DEE8AA400D35A77 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		3C91E16A1DEFD78900B592E1 /* ReactiveKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveKit.framework; path = "Carthage/Checkouts/ReactiveKit/build/Debug-iphoneos/ReactiveKit.framework"; sourceTree = "<group>"; };
 		3C91E16C1DEFD78F00B592E1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Carthage/Checkouts/realm-cocoa/build/Debug/Realm.framework"; sourceTree = "<group>"; };
 		3C91E16F1DEFD8A800B592E1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Build/Products/Debug-iphonesimulator/RealmSwift.framework"; sourceTree = "<group>"; };
+		3C91E1721DEFDA1A00B592E1 /* Cat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		3C91E1741DEFDC5D00B592E1 /* ReactiveUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveUIKit.framework; path = "Carthage/Checkouts/ReactiveUIKit/build/Debug-iphoneos/ReactiveUIKit.framework"; sourceTree = "<group>"; };
 		3CEB6D4E1DEE8AA400D35A77 /* SwappableDataSourceDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwappableDataSourceDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEB6D511DEE8AA400D35A77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CEB6D531DEE8AA400D35A77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C91E1751DEFDC5D00B592E1 /* ReactiveUIKit.framework in Frameworks */,
 				3C91E1701DEFD8A800B592E1 /* RealmSwift.framework in Frameworks */,
 				3C91E16D1DEFD78F00B592E1 /* Realm.framework in Frameworks */,
 				3C91E16B1DEFD78900B592E1 /* ReactiveKit.framework in Frameworks */,
@@ -85,6 +90,7 @@
 		3CEB6D501DEE8AA400D35A77 /* SwappableDataSourceDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3C91E1721DEFDA1A00B592E1 /* Cat.swift */,
 				3CEB6D511DEE8AA400D35A77 /* AppDelegate.swift */,
 				3CEB6D531DEE8AA400D35A77 /* ViewController.swift */,
 				3CEB6D551DEE8AA400D35A77 /* Main.storyboard */,
@@ -98,6 +104,7 @@
 		3CEB6DF11DEECFF600D35A77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C91E1741DEFDC5D00B592E1 /* ReactiveUIKit.framework */,
 				3C91E16F1DEFD8A800B592E1 /* RealmSwift.framework */,
 				3C91E16C1DEFD78F00B592E1 /* Realm.framework */,
 				3C91E16A1DEFD78900B592E1 /* ReactiveKit.framework */,
@@ -187,6 +194,7 @@
 			files = (
 				3CEB6D541DEE8AA400D35A77 /* ViewController.swift in Sources */,
 				3CEB6D521DEE8AA400D35A77 /* AppDelegate.swift in Sources */,
+				3C91E1731DEFDA1A00B592E1 /* Cat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +325,7 @@
 					"$(PROJECT_DIR)/Carthage/Checkouts/ReactiveKit/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Carthage/Checkouts/realm-cocoa/build/Debug",
 					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReactiveUIKit/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = SwappableDataSourceDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -337,6 +346,7 @@
 					"$(PROJECT_DIR)/Carthage/Checkouts/ReactiveKit/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Carthage/Checkouts/realm-cocoa/build/Debug",
 					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ReactiveUIKit/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = SwappableDataSourceDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
