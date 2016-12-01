@@ -5,6 +5,9 @@
       location = "container:"
       name = "Dependencies">
       <FileRef
+         location = "group:Carthage/Checkouts/ReactiveUIKit/ReactiveUIKit.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:Carthage/Checkouts/realm-cocoa/Realm.xcodeproj">
       </FileRef>
       <FileRef
