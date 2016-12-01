@@ -1,0 +1,12 @@
+[submodule "Carthage/Checkouts/Nimble"]
+	path = Carthage/Checkouts/Nimble
+	url = https://github.com/Quick/Nimble.git
+[submodule "Carthage/Checkouts/ReactiveKit"]
+	path = Carthage/Checkouts/ReactiveKit
+	url = https://github.com/ReactiveKit/ReactiveKit.git
+[submodule "Carthage/Checkouts/HotTakeCore"]
+	url = https://github.com/iandundas/HotTakeCore.git
+	path = Carthage/Checkouts/HotTakeCore
+[submodule "Carthage/Checkouts/realm-cocoa"]
+	path = Carthage/Checkouts/realm-cocoa
+	url = https://github.com/realm/realm-cocoa.git

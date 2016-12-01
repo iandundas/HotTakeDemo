@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Dependencies">
+      <FileRef
+         location = "group:Carthage/Checkouts/realm-cocoa/Realm.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Carthage/Checkouts/ReactiveKit/ReactiveKit.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Carthage/Checkouts/HotTakeRealm/HotTakeRealm.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Carthage/Checkouts/HotTakeCore/HotTakeCore.xcodeproj">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "container:SwappableDataSourceDemo.xcodeproj">
+   </FileRef>
+</Workspace>
