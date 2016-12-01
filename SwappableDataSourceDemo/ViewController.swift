@@ -13,27 +13,31 @@ import RealmSwift
 import HotTakeCore
 import HotTakeRealm
 
+
+let sharedRealmID = "MyInMemoryRealm"
+
 enum DemoDataSourceType{
     
-    case Manual, Realm
+    case Manual(cats: [Cat])
+    case Realm
     
     var datasource: AnyDataSource<Cat> {
         
         switch self {
-        case Manual:
-            let collection = [
-                Cat(value: ["name" : "Mr Timpy", "miceEaten": 8]),
-                Cat(value: ["name" : "Tumpy", "miceEaten": 3]),
-                Cat(value: ["name" : "Whiskers", "miceEaten": 30]),
-                Cat(value: ["name" : "Meow Now", "miceEaten": 10]), ]
-            
-            return AnyDataSource(ManualDataSource<Cat>(items: collection))
+        case Manual(let cats):
+            return ManualDataSource<Cat>(items: cats).eraseType()
             
         case .Realm:
-            let realm = try! RealmSwift.Realm(configuration: RealmSwift.Realm.Configuration(inMemoryIdentifier: "MyInMemoryRealm"))
+            let realm = try! RealmSwift.Realm(configuration: RealmSwift.Realm.Configuration(inMemoryIdentifier: sharedRealmID))
             let result = realm.objects(Cat).sorted("miceEaten")
-
-            return AnyDataSource(RealmDataSource(items: result))
+            return RealmDataSource(items: result).eraseType()
+        }
+    }
+    
+    var title: String{
+        switch self{
+        case .Manual: return "Array"
+        case .Realm: return "Realm"
         }
     }
     
@@ -41,19 +45,32 @@ enum DemoDataSourceType{
 
 class ViewController: UITableViewController {
     
-    let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "MyInMemoryRealm"))
+    // Create an in-memory realm:
+    let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: sharedRealmID))
     
-    var datasourceContainer:HotTakeCore.Container<Cat>!
+    var datasourceType: DemoDataSourceType!{
+        didSet{
+            title = datasourceType.title
+            container.datasource = datasourceType.datasource
+        }
+    }
     
-    var datasourceType = DemoDataSourceType.Manual
+    var container:HotTakeCore.Container<Cat>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setToolbarHidden(false, animated: false)
         
-        let datasource = datasourceType.datasource
-
-        datasourceContainer = HotTakeCore.Container(datasource: datasource)
-        datasourceContainer.collection.bindTo(tableView) {
+        let initialDataSourceType = DemoDataSourceType.Manual(cats: self.manual)
+        container = HotTakeCore.Container(datasource: initialDataSourceType.datasource)
+        datasourceType = initialDataSourceType
+        
+        container.collection.observeNext { (changeset) in
+            print("Changeset: \(changeset)\n\n")
+        }.disposeIn(rBag)
+        
+        // Bind to TableView:
+        container.collection.bindTo(tableView) {
             (indexPath, items, tableView) -> UITableViewCell in
             
             let item = items[indexPath.row]
@@ -62,30 +79,39 @@ class ViewController: UITableViewController {
             return cell
             
         }.disposeIn(rBag)
+        
+        
+        let catNames = ["Ali Cat", "Mr Paws", "Ali McClaw", "Tumpy", "Angelicat", "Kitten X", "Cat Benatar", "Catalie Portman", "Catsy Cline", "Chairwoman Miao", "Cindy Clawford", "Clawdia", "Demi Meower", "Empress", "Fleas Witherspoon", "Halley Purry", "Hello Kitty", "Isabellick", "Katy Purry"]
+        zip(tappedInsertCat, Stream.sequence(catNames)).observeNext { [weak self] _, catName in
+            guard let realm = self?.realm else {return}
+        
+            try! realm.write {
+                let cat = Cat(value: ["name" : catName, "miceEaten": Int(arc4random_uniform(200) + 1)])
+                realm.add(cat, update: true)
+            }
+        }.disposeIn(rBag)
+    }
+    
+    // Pull a random set of cats (name containing "cat") from Realm, store in an array:
+    var manual:[Cat]{   
+        let query = realm.objects(Cat).sorted("miceEaten").filter("name CONTAINS[c] %@", "cat")
+        return query.filter {_ in true }
     }
     
     
     // MARK: Actions:
     
-    // Insert a cat into realm
-    @IBAction func tappedA(sender: AnyObject) {
-        let cat = Cat(value: ["name" : "Mr Timpy", "miceEaten": 8])
-        
-        try! realm.write {
-            realm.add(cat, update: true)
-        }
+    let tappedInsertCat = PushStream<Void>()
+    @IBAction func insertCat(sender: AnyObject) {
+        tappedInsertCat.next()
     }
     
-    // Change to another data source
-    @IBAction func tappedB(sender: AnyObject) {
-    
-        switch (datasourceType){
-        case .Manual:
-            datasourceType = .Realm
-        case .Realm:
-            datasourceType = .Manual
-        }
-        
-        datasourceContainer.datasource = datasourceType.datasource
+    @IBAction func useArray(sender: AnyObject) {
+        datasourceType = .Manual(cats: self.manual)
     }
+    
+    @IBAction func useRealm(sender: AnyObject) {
+        datasourceType = .Realm
+    }
+    
 }

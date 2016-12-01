@@ -23,9 +23,9 @@ class Cat: Object {
 
 //extension Cat: Equatable{}
 
-//func ==(lhs: Cat, rhs: Cat) -> Bool{
-//    return lhs.name == rhs.name
-//}
+func ==(lhs: Cat, rhs: Cat) -> Bool{
+    return lhs.name == rhs.name
+}
 
 //func <(lhs: Cat, rhs: Cat) -> Bool{
 //    return true

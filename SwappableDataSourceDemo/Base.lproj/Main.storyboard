@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,9 +12,9 @@
         <!--View Controller-->
         <scene sceneID="qPQ-OK-Rb2">
             <objects>
-                <tableViewController id="P2l-5K-ao0" customClass="ViewController" customModule="ReactiveKitSwappableDatasource_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="P2l-5K-ao0" customClass="ViewController" customModule="SwappableDataSourceDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yjb-E8-P4p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -31,18 +32,26 @@
                             <outlet property="delegate" destination="P2l-5K-ao0" id="rK5-7k-zX7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="NFr-Hr-ogp">
-                        <barButtonItem key="leftBarButtonItem" title="DataA" id="lHO-Ox-C8f">
+                    <toolbarItems>
+                        <barButtonItem title="Insert Cat into Realm" id="JDo-R2-cuD">
                             <connections>
-                                <action selector="tappedA:" destination="P2l-5K-ao0" id="f28-5r-n4m"/>
+                                <action selector="insertCat:" destination="P2l-5K-ao0" id="k1n-BU-MnL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="DataB" id="WU3-f6-5MZ">
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="NFr-Hr-ogp">
+                        <barButtonItem key="leftBarButtonItem" title="Array" id="lHO-Ox-C8f">
                             <connections>
-                                <action selector="tappedB:" destination="P2l-5K-ao0" id="Oe3-Uf-IG0"/>
+                                <action selector="useArray:" destination="P2l-5K-ao0" id="wOc-55-1rW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Realm" id="WU3-f6-5MZ">
+                            <connections>
+                                <action selector="useRealm:" destination="P2l-5K-ao0" id="3xv-M9-KUT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZA-gR-2tV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
